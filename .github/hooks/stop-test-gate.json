@@ -1,0 +1,6 @@
+{
+  "name": "Stop Test Gate",
+  "description": "Runs the test suite before the agent can finish.",
+  "when": "stop",
+  "command": "npm run test"
+}

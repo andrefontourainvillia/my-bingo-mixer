@@ -6,6 +6,7 @@ export type { BingoSquareData, BingoLine } from '../types';
 
 const BOARD_SIZE = 5;
 const CENTER_INDEX = 12; // 5x5 grid, center is index 12 (row 2, col 2)
+const FOUR_CORNERS = [0, 4, 20, 24];
 
 /**
  * Shuffle an array using Fisher-Yates algorithm
@@ -96,6 +97,13 @@ function getWinningLines(): BingoLine[] {
     type: 'diagonal',
     index: 1,
     squares: [4, 8, 12, 16, 20],
+  });
+
+  // Four corners
+  lines.push({
+    type: 'corners',
+    index: 0,
+    squares: FOUR_CORNERS,
   });
 
   return lines;

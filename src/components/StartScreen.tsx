@@ -1,8 +1,9 @@
 interface StartScreenProps {
-  onStart: () => void;
+  onStartBingo: () => void;
+  onStartCardDeck: () => void;
 }
 
-export function StartScreen({ onStart }: StartScreenProps) {
+export function StartScreen({ onStartBingo, onStartCardDeck }: StartScreenProps) {
   return (
     <div className="relative flex min-h-full items-center justify-center overflow-hidden px-6 py-10">
       <div className="pointer-events-none absolute inset-0">
@@ -17,21 +18,37 @@ export function StartScreen({ onStart }: StartScreenProps) {
         <h1 className="font-display mt-2 text-5xl leading-tight text-white md:text-6xl">Bingo Mixer</h1>
         <p className="font-body mt-2 text-lg font-semibold text-pink-100">Anime Bubble Edition</p>
 
-        <div className="mt-8 rounded-2xl border border-white/30 bg-white/12 p-5 text-left backdrop-blur-lg">
-          <h2 className="font-display mb-3 text-xl text-cyan-100">How to play</h2>
-          <ul className="font-body space-y-2 text-sm text-indigo-50/95">
-            <li>• Find people who match the questions</li>
-            <li>• Tap a square when you find a match</li>
-            <li>• Get 5 in a row to win!</li>
-          </ul>
-        </div>
+        <p className="font-body mt-6 text-sm text-indigo-100/70">Escolha o modo de jogo</p>
 
-        <button
-          onClick={onStart}
-          className="font-display mt-8 w-full rounded-2xl border border-pink-100/80 bg-gradient-to-r from-pink-400 via-fuchsia-400 to-violet-400 px-8 py-4 text-xl font-semibold text-white shadow-[0_10px_28px_var(--glow-pink)] transition-all duration-300 active:scale-[0.98] hover:translate-y-[-1px] hover:shadow-[0_12px_34px_var(--glow-pink)]"
-        >
-          Start Bubble Match
-        </button>
+        <div className="mt-3 flex flex-col gap-3">
+          {/* Bingo mode */}
+          <button
+            onClick={onStartBingo}
+            className="group relative w-full overflow-hidden rounded-2xl border border-pink-100/70 bg-gradient-to-r from-pink-400 via-fuchsia-400 to-violet-400 px-6 py-4 text-left shadow-[0_10px_28px_var(--glow-pink)] transition-all duration-300 active:scale-[0.98] hover:-translate-y-[1px] hover:shadow-[0_12px_34px_var(--glow-pink)]"
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-3xl" aria-hidden>🎱</span>
+              <div>
+                <p className="font-display text-xl text-white">Bingo Clássico</p>
+                <p className="font-body text-xs text-pink-100/80">5 em linha — encontre as pessoas certas</p>
+              </div>
+            </div>
+          </button>
+
+          {/* Card Deck mode */}
+          <button
+            onClick={onStartCardDeck}
+            className="group relative w-full overflow-hidden rounded-2xl border border-cyan-200/40 bg-gradient-to-r from-cyan-500/40 via-indigo-500/40 to-violet-500/40 px-6 py-4 text-left shadow-[0_10px_28px_var(--glow-cyan)] backdrop-blur-sm transition-all duration-300 active:scale-[0.98] hover:-translate-y-[1px] hover:shadow-[0_12px_34px_var(--glow-cyan)] hover:bg-gradient-to-r hover:from-cyan-500/55 hover:via-indigo-500/50 hover:to-violet-500/50"
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-3xl" aria-hidden>🎴</span>
+              <div>
+                <p className="font-display text-xl text-white">Card Deck Shuffle</p>
+                <p className="font-body text-xs text-cyan-100/80">Sorteie uma carta — descubra sua missão</p>
+              </div>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );
